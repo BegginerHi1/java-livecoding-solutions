@@ -1,6 +1,6 @@
 package ru.nazarovsa.livecodingtraining.arrays;
 
-import java.util.*;
+import java.util.List;
 
 /**
  * Задачи для работы с массивами

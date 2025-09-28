@@ -120,7 +120,7 @@ class YieldReturnTasksTest {
 
     @Test
     void AnalyzeLogStream_IsLazyEvaluated_DoesNotProcessAllItemsImmediately() {
-        AtomicInteger processedCount = new AtomicInteger(0);
+        var processedCount = new AtomicInteger(0);
         Stream<String> logLines = Stream.iterate(0, i -> i + 1).limit(20)
             .map(i -> {
                 processedCount.incrementAndGet();
@@ -129,7 +129,7 @@ class YieldReturnTasksTest {
                         : String.format("2024-01-01 10:00:%02d INFO Info %d", i, i);
             });
 
-        String first = YieldReturnTasks.analyzeLogStream(logLines, 3).findFirst().orElse(null);
+        var first = YieldReturnTasks.analyzeLogStream(logLines, 3).findFirst().orElse(null);
         assertThat(processedCount.get()).isLessThan(20);
     }
 
