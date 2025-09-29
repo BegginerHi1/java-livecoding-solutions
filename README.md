@@ -6,16 +6,16 @@
 
 ### Основные задачи (`src/main/java/ru/nazarovsa/livecodingtraining/`)
 - **arrays** - задачи с массивами
-- **binarysearch** - задачи по бинарному поиску  
+- **binarysearch** - задачи по бинарному поиску
 - **binarytree** - задачи с бинарными деревьями
 - **datastructures** - структуры данных (MyQueue)
 - **hashtable** - задачи с хеш-таблицами
 - **linkedlists** - задачи со связанными списками
-- **linq** - задачи с Stream API
 - **matrix** - задачи с матрицами
 - **numbers** - задачи с числами
+- **streams** - задачи с Stream API
 - **strings** - задачи со строками
-- **yieldreturn** - задачи с Iterator/Stream
+- **yieldreturn** - задачи с lazy evaluation
 
 ### Тесты (`src/test/java/ru/nazarovsa/livecodingtraining/`)
 - Для каждой категории задач есть соответствующие тесты
