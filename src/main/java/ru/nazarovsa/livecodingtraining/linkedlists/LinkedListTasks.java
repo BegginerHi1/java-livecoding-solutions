@@ -2,13 +2,13 @@ package ru.nazarovsa.livecodingtraining.linkedlists;
 
 import ru.nazarovsa.livecodingtraining.linkedlists.infrastructure.Node;
 
-public class LinkedListExtensions {
+public class LinkedListTasks {
 
     /**
      * ИСПОЛЬЗОВАНО НА СОЗВОНЕ
      * Реализовать метод, который получает связанный список и целочисленный индекс, а возвращает узел на позиции индекса. Индекс первого узла начинается с 0, второго с 1 и так далее.
-     * LinkedListExtensions.getNth(1 -> 2 -> 3 -> null, 0).getData() == 1
-     * LinkedListExtensions.getNth(1 -> 2 -> 3 -> null, 1).getData() == 2
+     * LinkedListTasks.getNth(1 -> 2 -> 3 -> null, 0).getData() == 1
+     * LinkedListTasks.getNth(1 -> 2 -> 3 -> null, 1).getData() == 2
      * Если индекс выходит за границы 0 и длины списка, необходимо выбросить IllegalArgumentException
      */
     public static Node getNth(Node node, int index) {
@@ -19,10 +19,10 @@ public class LinkedListExtensions {
      * ИСПОЛЬЗОВАНО НА СОЗВОНЕ
      * Реализовать метод, который вставляет новый узел связного списка в указанный индекс. Индекс первого узла начинается с 0, второго с 1 и так далее.
      * Если индекс выходит за границы 0 и длины списка, необходимо выбросить IllegalArgumentException
-     * LinkedListExtensions.insertNth(1 -> 2 -> 3 -> null, 0, 7)  => 7 -> 1 -> 2 -> 3 -> null
-     * LinkedListExtensions.insertNth(1 -> 2 -> 3 -> null, 1, 7)  => 1 -> 7 -> 2 -> 3 -> null
-     * LinkedListExtensions.insertNth(1 -> 2 -> 3 -> null, 3, 7)  => 1 -> 2 -> 3 -> 7 -> null
-     * LinkedListExtensions.insertNth(1 -> 2 -> 3 -> null, -2, 7) // throws new IllegalArgumentException
+     * LinkedListTasks.insertNth(1 -> 2 -> 3 -> null, 0, 7)  => 7 -> 1 -> 2 -> 3 -> null
+     * LinkedListTasks.insertNth(1 -> 2 -> 3 -> null, 1, 7)  => 1 -> 7 -> 2 -> 3 -> null
+     * LinkedListTasks.insertNth(1 -> 2 -> 3 -> null, 3, 7)  => 1 -> 2 -> 3 -> 7 -> null
+     * LinkedListTasks.insertNth(1 -> 2 -> 3 -> null, -2, 7) // throws new IllegalArgumentException
      */
     public static Node insertNth(Node node, int index, int data) {
         throw new UnsupportedOperationException("Метод не реализован");

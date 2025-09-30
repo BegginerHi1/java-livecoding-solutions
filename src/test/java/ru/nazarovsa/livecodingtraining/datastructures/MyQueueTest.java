@@ -82,26 +82,22 @@ class MyQueueTest {
     }
 
     @Test
-    void tryDequeue_EmptyQueue_ReturnsFalseAndItemIsDefault() {
+    void poll_EmptyQueue_ReturnsNull() {
         MyQueue<Integer> queue = new MyQueue<>();
-        MyQueue.Holder<Integer> holder = new MyQueue.Holder<>();
 
-        boolean result = queue.tryDequeue(holder);
+        Integer result = queue.poll();
 
-        assertThat(result).isFalse();
-        assertThat(holder.value).isNull(); // default для Integer это null
+        assertThat(result).isNull();
     }
 
     @Test
-    void tryDequeue_TwoElements_ReturnsTrueAndItemIsDefinedAndRemovedFromQueue() {
+    void poll_TwoElements_ReturnsFirstElementAndRemovesFromQueue() {
         var items = Arrays.asList(1, 2);
         MyQueue<Integer> queue = new MyQueue<>(items);
-        MyQueue.Holder<Integer> holder = new MyQueue.Holder<>();
 
-        boolean result = queue.tryDequeue(holder);
+        Integer result = queue.poll();
 
-        assertThat(result).isTrue();
-        assertThat(holder.value).isEqualTo(1); // первый элемент
+        assertThat(result).isEqualTo(1); // первый элемент
         assertThat(queue.getCount()).isEqualTo(1);
         
         // Проверяем, что второй элемент стал первым
@@ -143,35 +139,24 @@ class MyQueueTest {
     }
 
     @Test
-    void queue_EmptyQueue_AddsElement() {
-        int item = 1;
+    void peek_EmptyQueue_ReturnsNull() {
         MyQueue<Integer> queue = new MyQueue<>();
 
-        queue.queue(item);
+        Integer result = queue.peek();
 
-        assertThat(queue.getCount()).isEqualTo(1);
-        // Проверяем, что элемент добавился как первый
-        Iterator<Integer> iterator = queue.iterator();
-        assertThat(iterator.hasNext()).isTrue();
-        assertThat(iterator.next()).isEqualTo(item);
+        assertThat(result).isNull();
+        assertThat(queue.getCount()).isZero();
     }
 
     @Test
-    void queue_NonEmptyQueue_AddsElement() {
-        int firstItem = 1;
-        int secondItem = 2;
-        MyQueue<Integer> queue = new MyQueue<>(firstItem);
+    void peek_NonEmptyQueue_ReturnsFirstElementWithoutRemoving() {
+        var items = Arrays.asList(1, 2, 3);
+        MyQueue<Integer> queue = new MyQueue<>(items);
 
-        queue.queue(secondItem);
+        Integer result = queue.peek();
 
-        assertThat(queue.getCount()).isEqualTo(2);
-        
-        // Проверяем порядок: первый элемент должен остаться первым
-        Iterator<Integer> iterator = queue.iterator();
-        assertThat(iterator.hasNext()).isTrue();
-        assertThat(iterator.next()).isEqualTo(firstItem);
-        assertThat(iterator.hasNext()).isTrue();
-        assertThat(iterator.next()).isEqualTo(secondItem);
+        assertThat(result).isEqualTo(1);
+        assertThat(queue.getCount()).isEqualTo(3); // Размер не изменился
     }
 
     @Test
@@ -241,14 +226,12 @@ class MyQueueTest {
     }
 
     @Test
-    void tryDequeue_WithStringType_WorksCorrectly() {
+    void poll_WithStringType_WorksCorrectly() {
         MyQueue<String> queue = new MyQueue<>("test");
-        MyQueue.Holder<String> holder = new MyQueue.Holder<>();
         
-        boolean result = queue.tryDequeue(holder);
+        String result = queue.poll();
         
-        assertThat(result).isTrue();
-        assertThat(holder.value).isEqualTo("test");
+        assertThat(result).isEqualTo("test");
         assertThat(queue).isEmpty();
     }
 

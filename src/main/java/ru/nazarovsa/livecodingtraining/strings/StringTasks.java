@@ -1,7 +1,7 @@
 package ru.nazarovsa.livecodingtraining.strings;
 
 import java.util.List;
-import java.util.Dictionary;
+import java.util.Map;
 
 /**
  * Задачи для работы со строками
@@ -228,7 +228,7 @@ public class StringTasks {
      * "aaa" → {'a': [0, 1, 2]}
      * "Hello" → {'H': [0], 'e': [1], 'l': [2, 3], 'o': [4]} (учитывается регистр)
      */
-    public static Dictionary<Character, List<Integer>> groupCharactersByPosition(String input) {
+    public static Map<Character, List<Integer>> groupCharactersByPosition(String input) {
         throw new UnsupportedOperationException("Метод не реализован");
     }
     

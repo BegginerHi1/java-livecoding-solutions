@@ -7,13 +7,6 @@ import java.util.Iterator;
  */
 public class MyQueue<T> implements Iterable<T> {
     /**
-     * Хелпер для имитации out-параметра в методе tryDequeue
-     */
-    public static class Holder<U> {
-        public U value;
-    }
-    
-    /**
      * Количество элементов в очереди
      */
     private int count = 0;
@@ -49,25 +42,26 @@ public class MyQueue<T> implements Iterable<T> {
     }
 
     /**
-     * Добавляет элемент в очередь
-     */
-    public void queue(T item) {
-        throw new UnsupportedOperationException("Метод не реализован");
-    }
-
-    /**
      * Извлекает первый элемент из очереди. Элемент удаляется из очереди.
-     * Если очередь пустая выбрасываед IllegalStateException.
+     * Если очередь пустая выбрасывает IllegalStateException.
      */
     public T dequeue() {
         throw new UnsupportedOperationException("Метод не реализован");
     }
 
     /**
-     * Пытается извлечь первый элемент. При успехе возвращает true и заполняет out параметр элементом. Элемент удаляется из очереди.
-     * Если очередь пустая, возвращает false.
+     * Извлекает и удаляет первый элемент из очереди.
+     * Возвращает null, если очередь пустая (аналог стандартного Queue.poll()).
      */
-    public boolean tryDequeue(Holder<T> item) {
+    public T poll() {
+        throw new UnsupportedOperationException("Метод не реализован");
+    }
+
+    /**
+     * Возвращает первый элемент без удаления.
+     * Возвращает null, если очередь пустая (аналог стандартного Queue.peek()).
+     */
+    public T peek() {
         throw new UnsupportedOperationException("Метод не реализован");
     }
 

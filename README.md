@@ -8,13 +8,12 @@
 - **arrays** - задачи с массивами
 - **binarysearch** - задачи по бинарному поиску
 - **binarytree** - задачи с бинарными деревьями
-- **datastructures** - структуры данных (MyQueue)
+- **datastructures** - структуры данных
 - **hashtable** - задачи с хеш-таблицами
 - **linkedlists** - задачи со связанными списками
 - **matrix** - задачи с матрицами
 - **numbers** - задачи с числами
 - **strings** - задачи со строками
-- **yieldreturn** - задачи с lazy evaluation
 
 ### Тесты (`src/test/java/ru/nazarovsa/livecodingtraining/`)
 - Для каждой категории задач есть соответствующие тесты
