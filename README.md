@@ -13,7 +13,6 @@
 - **linkedlists** - задачи со связанными списками
 - **matrix** - задачи с матрицами
 - **numbers** - задачи с числами
-- **streams** - задачи с Stream API
 - **strings** - задачи со строками
 - **yieldreturn** - задачи с lazy evaluation
 

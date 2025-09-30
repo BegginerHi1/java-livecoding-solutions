@@ -1,4 +1,4 @@
-package ru.nazarovsa.livecodingtraining.linkedlists;
+package ru.nazarovsa.livecodingtraining.linkedlists.infrastructure;
 
 import lombok.Data;
 
@@ -38,25 +38,6 @@ public class Node {
 
         for (int i = 1; i < values.length; i++) {
             current.next = new Node(values[i]);
-            current = current.next;
-        }
-
-        return head;
-    }
-
-    /**
-     * Создает связный список из списка значений
-     */
-    public static Node fromList(List<Integer> values) {
-        if (values == null || values.isEmpty()) {
-            throw new IllegalArgumentException("Список не может быть пустым");
-        }
-
-        Node head = new Node(values.get(0));
-        Node current = head;
-
-        for (int i = 1; i < values.size(); i++) {
-            current.next = new Node(values.get(i));
             current = current.next;
         }
 
