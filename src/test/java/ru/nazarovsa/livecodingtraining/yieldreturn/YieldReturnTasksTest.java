@@ -27,7 +27,7 @@ class YieldReturnTasksTest {
 
         List<String> results = YieldReturnTasks.analyzeLogStream(logLines.stream(), 3).collect(Collectors.toList());
 
-        assertThat(results.size()).isEqualTo(3);
+        assertThat(results).hasSize(3);
         assertThat(results.get(0)).isEqualTo("ALERT in last 5 entries position 4");
         assertThat(results.get(1)).isEqualTo("ALERT in last 5 entries position 5");
         assertThat(results.get(2)).isEqualTo("ALERT in last 5 entries position 6");
@@ -73,7 +73,7 @@ class YieldReturnTasksTest {
         );
 
         List<String> results = YieldReturnTasks.analyzeLogStream(logLines.stream(), 3).collect(Collectors.toList());
-        assertThat(results.size()).isEqualTo(4);
+        assertThat(results).hasSize(4);
         assertThat(results.get(0)).isEqualTo("ALERT in last 5 entries position 4");
         assertThat(results.get(1)).isEqualTo("ALERT in last 5 entries position 5");
         assertThat(results.get(2)).isEqualTo("ALERT in last 5 entries position 6");
@@ -107,8 +107,8 @@ class YieldReturnTasksTest {
         );
 
         List<String> results = YieldReturnTasks.analyzeLogStream(logLines.stream(), 3).collect(Collectors.toList());
-        assertThat(results.size()).isEqualTo(1);
-        assertThat(results.get(0)).isEqualTo("ALERT in last 5 entries position 4");
+        assertThat(results).hasSize(1);
+        assertThat(results.getFirst()).isEqualTo("ALERT in last 5 entries position 4");
     }
 
     @Test
@@ -148,7 +148,7 @@ class YieldReturnTasksTest {
         );
 
         List<String> results = YieldReturnTasks.analyzeLogStream(logLines.stream(), 3).collect(Collectors.toList());
-        assertThat(results.size()).isEqualTo(2);
+        assertThat(results).hasSize(2);
         assertThat(results.get(0)).isEqualTo("ALERT in last 5 entries position 4");
         assertThat(results.get(1)).isEqualTo("ALERT in last 5 entries position 5");
     }

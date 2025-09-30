@@ -10,7 +10,7 @@ class LinkedListExtensionsTest {
     @Test
     void getNth_Returns_Valid_Result() {
         var list = Node.fromArray(new int[]{0, 1, 2, 3});
-        assertThat(LinkedListExtensions.getNth(list, 0).getData()).isEqualTo(0);
+        assertThat(LinkedListExtensions.getNth(list, 0).getData()).isZero();
         assertThat(LinkedListExtensions.getNth(list, 1).getData()).isEqualTo(1);
         assertThat(LinkedListExtensions.getNth(list, 2).getData()).isEqualTo(2);
     }

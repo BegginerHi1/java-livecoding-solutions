@@ -78,7 +78,7 @@ class StringTasksTest {
 
     @Test
     void maxUniqueStringLength_ReturnsCorrectLength() {
-        assertThat(StringTasks.maxUniqueStringLength("")).isEqualTo(0);
+        assertThat(StringTasks.maxUniqueStringLength("")).isZero();
         assertThat(StringTasks.maxUniqueStringLength("аааобагдааа")).isEqualTo(5);
         assertThat(StringTasks.maxUniqueStringLength("абвадга")).isEqualTo(5);
         assertThat(StringTasks.maxUniqueStringLength("абвгдеж")).isEqualTo(7);
@@ -88,7 +88,7 @@ class StringTasksTest {
     @Test
     void rleCompress_VariousInputScenarios_ReturnsCorrectCompression() {
         assertThat(StringTasks.rleCompress("AAAAABBBBCCDDDOEEEF")).isEqualTo("A5B4C2D3O1E3F1");
-        assertThat(StringTasks.rleCompress("")).isEqualTo("");
+        assertThat(StringTasks.rleCompress("")).isEmpty();
         assertThat(StringTasks.rleCompress("A")).isEqualTo("A1");
         assertThat(StringTasks.rleCompress("AAAAAAA")).isEqualTo("A7");
         assertThat(StringTasks.rleCompress("ABCDEF")).isEqualTo("A1B1C1D1E1F1");
@@ -119,11 +119,11 @@ class StringTasksTest {
         assertThat(StringTasks.longestCommonPrefix(new String[]{"testing","tester","test"}))
             .isEqualTo("test");
         assertThat(StringTasks.longestCommonPrefix(new String[]{"dog","racecar","car"}))
-            .isEqualTo("");
+            .isEmpty();
         assertThat(StringTasks.longestCommonPrefix(new String[]{"abc","def","ghi"}))
-            .isEqualTo("");
+            .isEmpty();
         assertThat(StringTasks.longestCommonPrefix(new String[]{"a","b"}))
-            .isEqualTo("");
+            .isEmpty();
         assertThat(StringTasks.longestCommonPrefix(new String[]{"same","same","same"}))
             .isEqualTo("same");
         assertThat(StringTasks.longestCommonPrefix(new String[]{"hello","hello"}))
@@ -131,13 +131,13 @@ class StringTasksTest {
         assertThat(StringTasks.longestCommonPrefix(new String[]{"single"}))
             .isEqualTo("single");
         assertThat(StringTasks.longestCommonPrefix(new String[]{""}))
-            .isEqualTo("");
+            .isEmpty();
         assertThat(StringTasks.longestCommonPrefix(new String[]{}))
-            .isEqualTo("");
+            .isEmpty();
         assertThat(StringTasks.longestCommonPrefix(new String[]{"prefix","","pref"}))
-            .isEqualTo("");
+            .isEmpty();
         assertThat(StringTasks.longestCommonPrefix(new String[]{"","test","example"}))
-            .isEqualTo("");
+            .isEmpty();
         assertThat(StringTasks.longestCommonPrefix(new String[]{"a","aa","aaa"}))
             .isEqualTo("a");
         assertThat(StringTasks.longestCommonPrefix(new String[]{"prefix","pre","preparation"}))
@@ -150,7 +150,7 @@ class StringTasksTest {
         assertThat(StringTasks.reverseWordsInString("The quick brown fox")).isEqualTo("ehT kciuq nworb xof");
         assertThat(StringTasks.reverseWordsInString("hello")).isEqualTo("olleh");
         assertThat(StringTasks.reverseWordsInString("a")).isEqualTo("a");
-        assertThat(StringTasks.reverseWordsInString("")).isEqualTo("");
+        assertThat(StringTasks.reverseWordsInString("")).isEmpty();
         assertThat(StringTasks.reverseWordsInString("  test  ")).isEqualTo("  tset  ");
         assertThat(StringTasks.reverseWordsInString(" hello world ")).isEqualTo(" olleh dlrow ");
         assertThat(StringTasks.reverseWordsInString("hello   world")).isEqualTo("olleh   dlrow");
@@ -166,5 +166,122 @@ class StringTasksTest {
         assertThat(StringTasks.reverseWordsInString("testing")).isEqualTo("gnitset");
         assertThat(StringTasks.reverseWordsInString("application")).isEqualTo("noitacilppa");
         assertThat(StringTasks.reverseWordsInString("a b c d")).isEqualTo("a b c d");
+    }
+
+    @Test
+    void areAnagrams_ReturnsTrue_WhenStringsAreAnagrams() {
+        assertThat(StringTasks.areAnagrams("listen", "silent")).isTrue();
+        assertThat(StringTasks.areAnagrams("elbow", "below")).isTrue();
+        assertThat(StringTasks.areAnagrams("study", "dusty")).isTrue();
+        assertThat(StringTasks.areAnagrams("a gentleman", "elegant man")).isTrue();
+        assertThat(StringTasks.areAnagrams("", "")).isTrue();
+    }
+
+    @Test
+    void areAnagrams_ReturnsFalse_WhenStringsAreNotAnagrams() {
+        assertThat(StringTasks.areAnagrams("hello", "bello")).isFalse();
+        assertThat(StringTasks.areAnagrams("Hello", "hello")).isFalse();
+        assertThat(StringTasks.areAnagrams("conversation", "voices rant on")).isFalse();
+        assertThat(StringTasks.areAnagrams("abc", "def")).isFalse();
+        assertThat(StringTasks.areAnagrams("aab", "abb")).isFalse();
+        assertThat(StringTasks.areAnagrams("Astronomer", "Moon starer")).isFalse();
+    }
+
+    @Test
+    void canFormTarget_ReturnsTrue_WhenTargetCanBeFormed() {
+        assertThat(StringTasks.canFormTarget("programming", "gram")).isTrue();
+        assertThat(StringTasks.canFormTarget("abc", "cab")).isTrue();
+        assertThat(StringTasks.canFormTarget("a", "")).isTrue();
+        assertThat(StringTasks.canFormTarget("aab", "ab")).isTrue();
+    }
+
+    @Test
+    void canFormTarget_ReturnsFalse_WhenTargetCannotBeFormed() {
+        assertThat(StringTasks.canFormTarget("hello", "world")).isFalse();
+        assertThat(StringTasks.canFormTarget("abc", "abcc")).isFalse();
+        assertThat(StringTasks.canFormTarget("", "a")).isFalse();
+        assertThat(StringTasks.canFormTarget("Programming", "pro")).isFalse();
+    }
+
+    @Test
+    void firstUniqueChar_ReturnsCorrectIndex_WhenUniqueCharExists() {
+        assertThat(StringTasks.firstUniqueChar("leetcode")).isZero();
+        assertThat(StringTasks.firstUniqueChar("loveleetcode")).isEqualTo(2);
+        assertThat(StringTasks.firstUniqueChar("abcdef")).isZero();
+        assertThat(StringTasks.firstUniqueChar("a")).isZero();
+    }
+
+    @Test
+    void firstUniqueChar_ReturnsMinusOne_WhenNoUniqueCharExists() {
+        assertThat(StringTasks.firstUniqueChar("aabbcc")).isEqualTo(-1);
+        assertThat(StringTasks.firstUniqueChar("abccba")).isEqualTo(-1);
+        assertThat(StringTasks.firstUniqueChar("")).isEqualTo(-1);
+    }
+
+    @Test
+    void groupCharactersByPosition_ReturnsCorrectMap() {
+        var result1 = StringTasks.groupCharactersByPosition("hello");
+        assertThat(result1.get('h')).containsExactly(0);
+        assertThat(result1.get('e')).containsExactly(1);
+        assertThat(result1.get('l')).containsExactly(2, 3);
+        assertThat(result1.get('o')).containsExactly(4);
+
+        var result2 = StringTasks.groupCharactersByPosition("abcabc");
+        assertThat(result2.get('a')).containsExactly(0, 3);
+        assertThat(result2.get('b')).containsExactly(1, 4);
+        assertThat(result2.get('c')).containsExactly(2, 5);
+
+        var result3 = StringTasks.groupCharactersByPosition("");
+        assertThat(result3.size()).isZero();
+
+        var result4 = StringTasks.groupCharactersByPosition("aaa");
+        assertThat(result4.get('a')).containsExactly(0, 1, 2);
+    }
+
+    @Test
+    void formatPhoneNumber_ReturnsFormattedNumber_WhenValidInput() {
+        assertThat(StringTasks.formatPhoneNumber("abc123def456gh7890")).isEqualTo("(123) 456-7890");
+        assertThat(StringTasks.formatPhoneNumber("123-456-7890")).isEqualTo("(123) 456-7890");
+        assertThat(StringTasks.formatPhoneNumber("(555) 123-4567")).isEqualTo("(555) 123-4567");
+        assertThat(StringTasks.formatPhoneNumber("1234567890")).isEqualTo("(123) 456-7890");
+    }
+
+    @Test
+    void formatPhoneNumber_ReturnsInvalidMessage_WhenInvalidInput() {
+        assertThat(StringTasks.formatPhoneNumber("12345")).isEqualTo("Invalid phone number");
+        assertThat(StringTasks.formatPhoneNumber("12345678901")).isEqualTo("Invalid phone number");
+        assertThat(StringTasks.formatPhoneNumber("no digits here!")).isEqualTo("Invalid phone number");
+        assertThat(StringTasks.formatPhoneNumber("")).isEqualTo("Invalid phone number");
+    }
+
+    @Test
+    void decodeRle_ReturnsDecodedString() {
+        assertThat(StringTasks.decodeRle("a3b2c")).isEqualTo("aaabbc");
+        assertThat(StringTasks.decodeRle("abcd")).isEqualTo("abcd");
+        assertThat(StringTasks.decodeRle("x10y2z")).isEqualTo("xxxxxxxxxxyyz");
+        assertThat(StringTasks.decodeRle("")).isEmpty();
+        assertThat(StringTasks.decodeRle("a1")).isEqualTo("a");
+        assertThat(StringTasks.decodeRle("a10b1c5")).isEqualTo("aaaaaaaaaabccccc");
+    }
+
+    @Test
+    void decodeRoman_ReturnsCorrectNumber() {
+        assertThat(StringTasks.decodeRoman("XIV")).isEqualTo(14);
+        assertThat(StringTasks.decodeRoman("MCMXC")).isEqualTo(1990);
+        assertThat(StringTasks.decodeRoman("CDXLIV")).isEqualTo(444);
+        assertThat(StringTasks.decodeRoman("I")).isEqualTo(1);
+        assertThat(StringTasks.decodeRoman("V")).isEqualTo(5);
+        assertThat(StringTasks.decodeRoman("X")).isEqualTo(10);
+        assertThat(StringTasks.decodeRoman("L")).isEqualTo(50);
+        assertThat(StringTasks.decodeRoman("C")).isEqualTo(100);
+        assertThat(StringTasks.decodeRoman("D")).isEqualTo(500);
+        assertThat(StringTasks.decodeRoman("M")).isEqualTo(1000);
+        assertThat(StringTasks.decodeRoman("IV")).isEqualTo(4);
+        assertThat(StringTasks.decodeRoman("IX")).isEqualTo(9);
+        assertThat(StringTasks.decodeRoman("XL")).isEqualTo(40);
+        assertThat(StringTasks.decodeRoman("XC")).isEqualTo(90);
+        assertThat(StringTasks.decodeRoman("CD")).isEqualTo(400);
+        assertThat(StringTasks.decodeRoman("CM")).isEqualTo(900);
+        assertThat(StringTasks.decodeRoman("MMXXIII")).isEqualTo(2023);
     }
 }
