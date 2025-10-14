@@ -3,6 +3,7 @@ package ru.nazarovsa.livecodingtraining.binarysearch;
 public class BinarySearchTasks {
 
     /**
+     * Задача 38.
      * ИСПОЛЬЗОВАНО НА СОЗВОНЕ
      * Условие:
      * Дано положительное целое число n. Определите,

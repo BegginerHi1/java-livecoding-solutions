@@ -3,6 +3,7 @@ package ru.nazarovsa.livecodingtraining.hashtable;
 public class HashTableTasks {
 
     /**
+     * Задача 41.
      * ИСПОЛЬЗОВАНО НА СОЗВОНЕ
      * Проверяет, являются ли две строки изоморфными.
      * 

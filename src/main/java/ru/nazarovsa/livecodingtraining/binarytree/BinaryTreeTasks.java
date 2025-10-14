@@ -3,6 +3,7 @@ package ru.nazarovsa.livecodingtraining.binarytree;
 public class BinaryTreeTasks {
 
     /**
+     * Задача 39.
      * ИСПОЛЬЗОВАНО НА СОЗВОНЕ
      * Задача: Path Sum (Сумма пути)
      * 
