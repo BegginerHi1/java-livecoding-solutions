@@ -74,7 +74,7 @@ class MyQueueTest {
 
         assertThat(result).isEqualTo(1); // первый элемент
         assertThat(queue.getCount()).isEqualTo(1);
-        
+
         // Проверяем, что второй элемент стал первым
         Iterator<Integer> iterator = queue.iterator();
         assertThat(iterator.hasNext()).isTrue();
@@ -99,7 +99,7 @@ class MyQueueTest {
 
         assertThat(result).isEqualTo(1); // первый элемент
         assertThat(queue.getCount()).isEqualTo(1);
-        
+
         // Проверяем, что второй элемент стал первым
         Iterator<Integer> iterator = queue.iterator();
         assertThat(iterator.hasNext()).isTrue();
@@ -129,7 +129,7 @@ class MyQueueTest {
         queue.enqueue(secondItem);
 
         assertThat(queue.getCount()).isEqualTo(2);
-        
+
         // Проверяем порядок: первый элемент должен остаться первым
         Iterator<Integer> iterator = queue.iterator();
         assertThat(iterator.hasNext()).isTrue();
@@ -162,17 +162,17 @@ class MyQueueTest {
     @Test
     void fifoOrder_EnqueueAndDequeue_MaintainsCorrectOrder() {
         MyQueue<String> queue = new MyQueue<>();
-        
+
         // Добавляем элементы
         queue.enqueue("first");
         queue.enqueue("second");
         queue.enqueue("third");
-        
+
         // Извлекаем в том же порядке (FIFO)
         assertThat(queue.dequeue()).isEqualTo("first");
         assertThat(queue.dequeue()).isEqualTo("second");
         assertThat(queue.dequeue()).isEqualTo("third");
-        
+
         assertThat(queue).isEmpty();
     }
 
@@ -180,7 +180,7 @@ class MyQueueTest {
     void iterator_EmptyQueue_HasNoElements() {
         MyQueue<Integer> queue = new MyQueue<>();
         Iterator<Integer> iterator = queue.iterator();
-        
+
         assertThat(iterator.hasNext()).isFalse();
         assertThatThrownBy(iterator::next)
                 .isInstanceOf(NoSuchElementException.class);
@@ -190,7 +190,7 @@ class MyQueueTest {
     void iterator_WithElements_IteratesInCorrectOrder() {
         var items = Arrays.asList(1, 2, 3, 4);
         MyQueue<Integer> queue = new MyQueue<>(items);
-        
+
         int index = 0;
         for (Integer item : queue) {
             assertThat(item).isEqualTo(items.get(index));
@@ -202,35 +202,35 @@ class MyQueueTest {
     @Test
     void mixedOperations_EnqueueDequeueSequence_WorksCorrectly() {
         MyQueue<Integer> queue = new MyQueue<>();
-        
+
         // Добавляем некоторые элементы
         queue.enqueue(1);
         queue.enqueue(2);
         assertThat(queue.getCount()).isEqualTo(2);
-        
+
         // Извлекаем один
         assertThat(queue.dequeue()).isEqualTo(1);
         assertThat(queue.getCount()).isEqualTo(1);
-        
+
         // Добавляем еще
         queue.enqueue(3);
         queue.enqueue(4);
         assertThat(queue.getCount()).isEqualTo(3);
-        
+
         // Извлекаем все остальные
         assertThat(queue.dequeue()).isEqualTo(2);
         assertThat(queue.dequeue()).isEqualTo(3);
         assertThat(queue.dequeue()).isEqualTo(4);
-        
+
         assertThat(queue).isEmpty();
     }
 
     @Test
     void poll_WithStringType_WorksCorrectly() {
         MyQueue<String> queue = new MyQueue<>("test");
-        
+
         String result = queue.poll();
-        
+
         assertThat(result).isEqualTo("test");
         assertThat(queue).isEmpty();
     }
@@ -239,16 +239,16 @@ class MyQueueTest {
     void getCount_ReturnsCorrectValue() {
         MyQueue<Integer> queue = new MyQueue<>();
         assertThat(queue.getCount()).isZero();
-        
+
         queue.enqueue(1);
         assertThat(queue.getCount()).isEqualTo(1);
-        
+
         queue.enqueue(2);
         assertThat(queue.getCount()).isEqualTo(2);
-        
+
         queue.dequeue();
         assertThat(queue.getCount()).isEqualTo(1);
-        
+
         queue.dequeue();
         assertThat(queue.getCount()).isZero();
     }

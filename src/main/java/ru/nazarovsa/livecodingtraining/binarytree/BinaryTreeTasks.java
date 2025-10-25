@@ -6,32 +6,32 @@ public class BinaryTreeTasks {
      * Задача 39.
      * ИСПОЛЬЗОВАНО НА СОЗВОНЕ
      * Задача: Path Sum (Сумма пути)
-     * 
-     * Дано бинарное дерево и целое число targetSum. Определить, существует ли путь 
+     * <p>
+     * Дано бинарное дерево и целое число targetSum. Определить, существует ли путь
      * от корня до листа, такой что сумма всех значений узлов на этом пути равна targetSum.
-     *
+     * <p>
      * Лист - это узел, у которого нет дочерних узлов.
-     * 
+     * <p>
      * Примеры:
-     * 
+     * <p>
      * Пример 1:
      * Дерево:      5
-     *             / \
-     *            4   8
-     *           /   / \
-     *          11  13  4
-     *         / \      \
-     *        7   2      1
-     * 
+     * / \
+     * 4   8
+     * /   / \
+     * 11  13  4
+     * / \      \
+     * 7   2      1
+     * <p>
      * Ввод: root = [5,4,8,11,null,13,4,7,2,null,null,null,1], targetSum = 22
      * Вывод: true
      * Объяснение: Путь 5->4->11->2 дает сумму 22
-     * 
+     * <p>
      * Пример 2:
      * Дерево:    1
-     *           / \
-     *          2   3
-     * 
+     * / \
+     * 2   3
+     * <p>
      * Ввод: root = [1,2,3], targetSum = 5
      * Вывод: false
      * Объяснение: Есть два пути от корня до листьев:
@@ -40,7 +40,24 @@ public class BinaryTreeTasks {
      * Ни один из них не равен 5
      */
     public static boolean hasPathSum(TreeNode root, int targetSum) {
-        throw new UnsupportedOperationException("Метод не реализован");
+        if (root == null) {
+            return false;
+        }
+        if (targetSum - root.val == 0 & root.left == null & root.right == null) {
+            return true;
+        }
+        boolean flag = false;
+        if (root.left != null) {
+            flag = hasPathSum(root.left, targetSum - root.val);
+        }
+        if (flag) {
+            return true;
+        }
+        if (root.right != null) {
+            flag = hasPathSum(root.right, targetSum - root.val);
+        }
+
+        return flag;
     }
 
     public static class TreeNode {

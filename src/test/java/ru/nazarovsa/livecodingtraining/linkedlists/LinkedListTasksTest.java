@@ -57,41 +57,4 @@ class LinkedListTasksTest {
         assertThatThrownBy(() -> LinkedListTasks.insertNth(list, 4, 4)).isInstanceOf(IllegalArgumentException.class);
         assertThatThrownBy(() -> LinkedListTasks.insertNth(list, -1, -1)).isInstanceOf(IllegalArgumentException.class);
     }
-
-    @Test
-    void iterativeReverse_ThreeElements_ReturnsHeadOfReversed() {
-        var list = Node.fromArray(new int[]{0, 1, 2});
-        var expected = Node.fromArray(new int[]{2, 1, 0});
-        var reversedHead = LinkedListTasks.iterativeReverse(list);
-        assertThat(reversedHead.toArray()).containsExactly(expected.toArray());
-    }
-
-    @Test
-    void recursiveReverse_ThreeElements_ReturnsHeadOfReversed() {
-        var list = Node.fromArray(new int[]{0, 1, 2});
-        var expected = Node.fromArray(new int[]{2, 1, 0});
-        var reversedHead = LinkedListTasks.recursiveReverse(list);
-        assertThat(reversedHead.toArray()).containsExactly(expected.toArray());
-    }
-
-    @Test
-    void middleNode_WithVariousLists_ReturnsExpectedMiddleNode() {
-        var single = new Node(1);
-        assertThat(LinkedListTasks.middleNode(single).getData()).isEqualTo(1);
-
-        var two = new Node(1, new Node(2));
-        assertThat(LinkedListTasks.middleNode(two).getData()).isEqualTo(2);
-
-        var three = new Node(1, new Node(2, new Node(3)));
-        assertThat(LinkedListTasks.middleNode(three).getData()).isEqualTo(2);
-
-        var four = new Node(1, new Node(2, new Node(3, new Node(4))));
-        assertThat(LinkedListTasks.middleNode(four).getData()).isEqualTo(3);
-
-        var five = Node.fromArray(new int[]{1,2,3,4,5});
-        assertThat(LinkedListTasks.middleNode(five).getData()).isEqualTo(3);
-
-        var six = Node.fromArray(new int[]{1,2,3,4,5,6});
-        assertThat(LinkedListTasks.middleNode(six).getData()).isEqualTo(4);
-    }
 }

@@ -12,6 +12,20 @@ public class NumberTasks {
      * 493193  -->  4 + 9 + 3 + 1 + 9 + 3 = 29  -->  2 + 9 = 11  -->  1 + 1 = 2
      */
     public static int digitalRoot(long n) {
-        throw new UnsupportedOperationException("Метод не реализован");
+
+        if (String.valueOf(n).split("").length == 1) {
+            return Math.toIntExact(n);
+        }
+
+        String nString = String.valueOf(n);
+        String[] nStringArr = nString.split("");
+
+        long res = 0;
+
+        for (String s : nStringArr) {
+            res += Long.parseLong(s);
+        }
+
+        return digitalRoot(res);
     }
 }

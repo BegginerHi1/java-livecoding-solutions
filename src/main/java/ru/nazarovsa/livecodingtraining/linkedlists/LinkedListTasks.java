@@ -13,7 +13,22 @@ public class LinkedListTasks {
      * Если индекс выходит за границы 0 и длины списка, необходимо выбросить IllegalArgumentException
      */
     public static Node getNth(Node node, int index) {
-        throw new UnsupportedOperationException("Метод не реализован");
+        if (index < 0) {
+            throw new IllegalArgumentException();
+        }
+
+        int count = 0;
+
+        while (count < index & node != null) {
+            node = node.getNext();
+            count++;
+        }
+        if (index > count) {
+            throw new IllegalArgumentException();
+        }
+
+
+        return node;
     }
 
     /**
@@ -27,39 +42,37 @@ public class LinkedListTasks {
      * LinkedListTasks.insertNth(1 -> 2 -> 3 -> null, -2, 7) // throws new IllegalArgumentException
      */
     public static Node insertNth(Node node, int index, int data) {
-        throw new UnsupportedOperationException("Метод не реализован");
-    }
+        if (node == null) {
+            return new Node(data);
+        }
 
-    /**
-     * Задача 3.
-     * ИСПОЛЬЗОВАНО НА СОЗВОНЕ
-     * Реализовать итеративный метод переворачивания связанного списка. Метод должен вернуть голову нового списка.
-     */
-    public static Node iterativeReverse(Node node) {
-        throw new UnsupportedOperationException("Метод не реализован");
-    }
+        if (index < 0 | index > node.size()) {
+            throw new IllegalArgumentException();
+        }
 
-    /**
-     * Задача 4.
-     * ИСПОЛЬЗОВАНО НА СОЗВОНЕ
-     * Реализовать рекурсивный метод переворачивания связанного списка. Метод должен вернуть голову нового списка.
-     */
-    public static Node recursiveReverse(Node node) {
-        throw new UnsupportedOperationException("Метод не реализован");
-    }
+        if (index == 0) {
+            return new Node(data, node);
+        }
 
-    /**
-     * Задача 5.
-     * ИСПОЛЬЗОВАНО НА СОЗВОНЕ
-     * Дан односвязный список.
-     * Необходимо найти средний узел списка.
-     * Если в списке четное количество узлов, вернуть второй из двух средних узлов.
-     * Примеры:
-     * 
-     * Список: [1,2,3,4,5] → вернуть узел со значением 3
-     * Список: [1,2,3,4,5,6] → вернуть узел со значением 4
-     */
-    public static Node middleNode(Node head) {
-        throw new UnsupportedOperationException("Метод не реализован");
+        Node current = node;
+        int count = 0;
+        Node temp;
+
+        while (count <= index) {
+
+            if (count + 1 == index & current.getNext() != null) {
+                temp = current.getNext();
+                current.setNext(new Node(data, temp));
+                return node;
+            } else if (count + 1 == index & current.getNext() == null) {
+                current.setNext(new Node(data));
+                return node;
+            }
+
+            current = current.getNext();
+            count++;
+        }
+
+        return node;
     }
 }
